@@ -1,3 +1,13 @@
+const buttons = document.querySelectorAll('.btn')
+const display = document.querySelector('.display-text')
+
+buttons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        display.innerText = e.target.innerText
+    })
+})
+
+
 function add(x,y) {
     return x + y
 }
@@ -29,4 +39,4 @@ function operate(operator,a,b){
     }
 }
 
-console.log(operate('+',1,3))
+
