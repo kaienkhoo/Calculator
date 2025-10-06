@@ -33,20 +33,32 @@ buttons.forEach(button => {
             }
 
             isTypingSecond = true
-        }
-        
-        if(val === "="){
+
             if(first && op && second){
                 const result = operate(op,Number(first),Number(second))
-                display.textContent = result
-                first = String(result);
+                const displayResult = result % 1 != 0 ? result.toFixed(2) : result
+                display.textContent =  displayResult
+                first = String(displayResult);
                 second = "";
-                op = "";
-                isTypingSecond = false;
-            }
+                op = val;
+            } 
 
             return
         }
+
+        if(val === "=") {
+            if(first && op && second){
+                const result = operate(op,Number(first),Number(second))
+                const displayResult = result % 1 != 0 ? result.toFixed(2) : result
+                display.textContent =  displayResult
+                first = String(displayResult);
+                second = "";
+                op = "";
+                isTypingSecond = false
+            }
+        }
+        
+
 
         if (val.toLowerCase() === "c") {
             first = second = op = "";
